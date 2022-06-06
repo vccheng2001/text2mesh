@@ -409,7 +409,8 @@ def update_mesh(mlp, network_input, prior_color, sampled_mesh, vertices):
     MeshNormalizer(sampled_mesh)()
 
 
-if __name__ == '__main__':
+
+def make_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('--obj_path', type=str, default='meshes/mesh1.obj')
     parser.add_argument('--prompt', nargs="+", default='a pig with pants')
@@ -475,7 +476,11 @@ if __name__ == '__main__':
     parser.add_argument('--symmetry', default=False, action='store_true')
     parser.add_argument('--only_z', default=False, action='store_true')
     parser.add_argument('--standardize', default=False, action='store_true')
+    
 
     args = parser.parse_args()
+    return args 
 
+if __name__ == '__main__':
+    args = make_parser()
     run_branched(args)

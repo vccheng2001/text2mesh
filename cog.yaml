@@ -1,0 +1,48 @@
+# Configuration for Cog ⚙️
+# Reference: https://github.com/replicate/cog/blob/main/docs/yaml.md
+
+build:
+  # set to true if your model requires a GPU
+  gpu: true
+  cuda: "10.2"
+
+  # a list of ubuntu apt packages to install
+  # system_packages:
+    # - "libgl1-mesa-glx"
+    # - "libglib2.0-0"
+
+  # python version in the form '3.8' or '3.8.12'
+  python_version: "3.8"
+
+  # a list of packages in the format <package-name>==<version>
+  python_packages:
+    - "ipython==7.33.0"
+    # - "torch==1.11.0"
+    # - "torchvision==0.12.0"
+    - "numpy==1.21.6"
+    
+    - "trimesh==3.9.33"
+    - "matplotlib==3.4.2"
+    - "einops==0.3.2"
+    - "siren_pytorch==0.1.5"
+    - "usd-core==21.8"
+    # - "git+https://github.com/NVIDIAGameWorks/kaolin@838d982cb0765de75d3c5de15083d80b849fa737"
+
+    # - "git+https://github.com/openai/CLIP.git@04f4dc2ca1ed0acc9893bd1a3b526a7e02c4bb10"
+    # - "git+https://github.com/NVIDIAGameWorks/kaolin@838d982cb0765de75d3c5de15083d80b849fa737"
+
+
+  # commands run after the environment is setup
+  run:
+    - "apt-get update && apt-get install -y cmake ffmpeg libsm6 libxext6"
+    - "pip install cython scipy numpy"
+    - "pip install torch==1.9.0 torchvision==0.10.0 --extra-index-url https://download.pytorch.org/whl/cu102"
+
+    # - "pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html"
+    - "pip install opencv-python"
+    - "pip install git+https://github.com/openai/CLIP.git@04f4dc2ca1ed0acc9893bd1a3b526a7e02c4bb10"
+    - "pip install git+https://github.com/NVIDIAGameWorks/kaolin@838d982cb0765de75d3c5de15083d80b849fa737"
+    # - "pip install aubio==0.4.9"
+
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
