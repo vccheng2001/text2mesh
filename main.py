@@ -319,8 +319,8 @@ def run_branched(args):
         if i % 100 == 0:
             report_process(args, dir, i, loss, loss_check, losses, rendered_images)
 
-    export_final_results(args, dir, losses, mesh, mlp, network_input, vertices)
-
+    output_mesh_path = export_final_results(args, dir, losses, mesh, mlp, network_input, vertices)
+    return output_mesh_path
 
 def report_process(args, dir, i, loss, loss_check, losses, rendered_images):
     print('iter: {} loss: {}'.format(i, loss.item()))
@@ -360,6 +360,9 @@ def export_final_results(args, dir, losses, mesh, mlp, network_input, vertices):
 
         # Save final losses
         torch.save(torch.tensor(losses), os.path.join(dir, "losses.pt"))
+
+        # Return output mesh path
+        return os.path.join(dir, f"{objbase}_final.obj")
 
 
 def save_rendered_results(args, dir, final_color, mesh):
@@ -479,3 +482,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     run_branched(args)
+

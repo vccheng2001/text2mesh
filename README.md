@@ -83,6 +83,10 @@ The outputs will be saved to `results/demo`, with the stylized .obj files, color
 </p>
 
 ## Other implementations
+[Demo and Docker image on Replicate](https://replicate.com/threedle/text2mesh)
+<a href="https://replicate.com/threedle/text2mesh/"><img src="https://replicate.com/threedle/text2mesh/badge"></a>
+
+
 [Kaggle Notebook](https://www.kaggle.com/neverix/text2mesh/) (by [neverix](https://www.kaggle.com/neverix))
 
 
