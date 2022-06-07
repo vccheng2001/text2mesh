@@ -285,7 +285,7 @@ class Renderer():
                 background_mask = torch.zeros(image.shape).to(device)
                 mask = mask.squeeze(-1)
                 assert torch.all(image[torch.where(mask == 0)] == torch.zeros(3).to(device))
-                background_mask[torch.where(mask == 0)] = background
+                background_mask[torch.where(mask == 0)] = background.float()
                 image = torch.clamp(image + background_mask, 0., 1.)
             images.append(image)
 

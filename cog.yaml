@@ -35,14 +35,16 @@ build:
   # commands run after the environment is setup
   run:
     - "apt-get update && apt-get install -y cmake ffmpeg libsm6 libxext6"
-    - "pip install cython scipy numpy"
+    - "pip install cython==0.29.20"
+    - "pip install scipy numpy"
     - "pip install torch==1.9.0 torchvision==0.10.0 --extra-index-url https://download.pytorch.org/whl/cu102"
 
     # - "pip install torch==1.9.1+cu111 torchvision==0.10.1+cu111 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html"
     - "pip install opencv-python"
     - "pip install git+https://github.com/openai/CLIP.git@04f4dc2ca1ed0acc9893bd1a3b526a7e02c4bb10"
-    - "pip install git+https://github.com/NVIDIAGameWorks/kaolin@838d982cb0765de75d3c5de15083d80b849fa737"
-    # - "pip install aubio==0.4.9"
+    # - "pip install git+https://github.com/NVIDIAGameWorks/kaolin@838d982cb0765de75d3c5de15083d80b849fa737"
+    # - "git clone --recursive https://github.com/NVIDIAGameWorks/kaolin"
+
 
 # predict.py defines how predictions are run on your model
 predict: "predict.py:Predictor"
