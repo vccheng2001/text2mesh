@@ -4,7 +4,7 @@
 build:
   # set to true if your model requires a GPU
   gpu: true
-  cuda: "10.2"
+  cuda: "11.4"
 
   # a list of ubuntu apt packages to install
   # system_packages:
@@ -26,11 +26,12 @@ build:
     - "siren_pytorch==0.1.5"
     - "usd-core==21.8"
     - "opencv-python==4.5.5.64"
-    
+    - "torch==1.9.0"
+    - "torchvision==0.10.0"
   # commands run after the environment is setup
   run:
     - "apt-get update && apt-get install -y cmake ffmpeg libsm6 libxext6"
-    - "pip install torch==1.9.0 torchvision==0.10.0 --extra-index-url https://download.pytorch.org/whl/cu102"
+    # - "pip install torch==1.9.0 torchvision==0.10.0 --extra-index-url https://download.pytorch.org/whl/cu102"
     - "pip install git+https://github.com/openai/CLIP.git@04f4dc2ca1ed0acc9893bd1a3b526a7e02c4bb10"
     - "git clone --recursive https://github.com/NVIDIAGameWorks/kaolin && cd kaolin && python setup.py develop"
 
